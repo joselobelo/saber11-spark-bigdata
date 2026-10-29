@@ -183,6 +183,8 @@ git push
 
 Video de demostración: https://youtu.be/S3rr41EvgX8
 
+Presentación online: https://docs.google.com/presentation/d/11K_POXtXUlJDB2TKmH67MEMapU7BXw2B/edit?usp=sharing
+
 ## 11. Evidencias de ejecución
 
 Ejecución verificada el **29 de octubre de 2026** sobre el entorno Linux de la máquina del autor.
