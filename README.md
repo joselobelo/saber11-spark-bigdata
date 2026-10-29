@@ -94,7 +94,7 @@ pip3 install -r requirements.txt       # matplotlib (gráficos) y kafka-python (
 
 ```bash
 # 0) Clonar el repositorio en la máquina virtual
-git clone [URL-DEL-REPOSITORIO]
+git clone https://github.com/joselobelo/saber11-spark-bigdata.git
 cd saber11-spark-bigdata
 
 # 1) Descargar el conjunto de datos desde la fuente original (2019-2022, ~2,2 M filas)
