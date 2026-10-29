@@ -227,6 +227,7 @@ queda tal como lo pide el Anexo 3, para ejecutarlo en la máquina virtual del cu
 | `evidencias/log_ejecucion_batch_p1..p5.png` | El mismo log en imagen, para pegar en el informe o la presentación |
 | `evidencias/log_ejecucion_streaming.txt` | Log completo del consumidor de Structured Streaming |
 | `evidencias/log_ejecucion_streaming_p1..p6.png` | El mismo log en imagen |
+| `evidencias/capturas/captura_01..06_*.png` | Capturas de pantalla del equipo: Finder con las evidencias y los graficos, Vista Previa con los registros de ejecucion y el grafico de estrato, y el repositorio en GitHub |
 | `evidencias/ventanas_streaming.csv` | Estado final de las ventanas de 1 minuto por sensor |
 | `evidencias/streaming_sensores.png` | Gráfico de temperatura promedio por sensor y eventos por ventana |
 | `salidas/graficos/g1..g8*.png` | Los 8 gráficos del análisis en batch |
