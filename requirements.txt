@@ -1,0 +1,3 @@
+# PySpark viene incluido con la instalación de Apache Spark de la máquina virtual (spark-submit)
+matplotlib>=3.4
+kafka-python>=2.0.2

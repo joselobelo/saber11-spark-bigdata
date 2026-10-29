@@ -1,0 +1,512 @@
+==============================================================
+ Tarea 3 - Big Data (UNAD 202016911) - Apache Spark Streaming
+ Consumidor extendido del Anexo 3 - ventanas de 1 minuto
+ Fecha de ejecucion : 2026-10-29 14:37:28 UTC
+ PySpark            : 3.5.1
+ Fuente             : 'rate' de Spark (5 eventos/s, 10 sensores simulados)
+ Umbral de alerta   : 28.0 C
+
+ NOTA SOBRE KAFKA: en esta maquina no fue posible instalar el broker
+ ni el conector spark-sql-kafka porque repo1.maven.org,
+ downloads.apache.org y archive.apache.org estan bloqueados por la
+ lista de dominios permitidos de la sesion. Se ejecuto el modo
+ --sin-kafka del propio script, que corre el MISMO pipeline de
+ Structured Streaming (from_json -> withWatermark -> window(1 min)
+ -> agregaciones -> sinks console y foreachBatch/CSV).
+==============================================================
+
+$ spark-submit --master local[4] streaming/spark_streaming_consumer_ext.py --sin-kafka --segundos 120
+
+Picked up JAVA_TOOL_OPTIONS: -javaagent:/opt/cowork-node-tools/node_modules/@anthropic-ai/sandbox-runtime/vendor/java-proxy-agent/srt-proxy-agent.jar
+Picked up JAVA_TOOL_OPTIONS: -javaagent:/opt/cowork-node-tools/node_modules/@anthropic-ai/sandbox-runtime/vendor/java-proxy-agent/srt-proxy-agent.jar
+ERROR StatusLogger Could not determine local host name
+ java.net.UnknownHostException: claude: claude: Temporary failure in name resolution
+	at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1670)
+	at org.apache.logging.log4j.core.util.NetUtils.getLocalHostname(NetUtils.java:56)
+	at org.apache.logging.log4j.core.LoggerContext.lambda$setConfiguration$0(LoggerContext.java:615)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1705)
+	at org.apache.logging.log4j.core.LoggerContext.setConfiguration(LoggerContext.java:615)
+	at org.apache.logging.log4j.core.LoggerContext.reconfigure(LoggerContext.java:694)
+	at org.apache.logging.log4j.core.LoggerContext.reconfigure(LoggerContext.java:711)
+	at org.apache.logging.log4j.core.LoggerContext.start(LoggerContext.java:253)
+	at org.apache.logging.log4j.core.impl.Log4jContextFactory.getContext(Log4jContextFactory.java:245)
+	at org.apache.logging.log4j.core.impl.Log4jContextFactory.getContext(Log4jContextFactory.java:47)
+	at org.apache.logging.log4j.LogManager.getContext(LogManager.java:176)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:666)
+	at org.apache.logging.log4j.LogManager.getRootLogger(LogManager.java:700)
+	at org.apache.spark.internal.Logging.initializeLogging(Logging.scala:129)
+	at org.apache.spark.internal.Logging.initializeLogIfNecessary(Logging.scala:114)
+	at org.apache.spark.internal.Logging.initializeLogIfNecessary$(Logging.scala:108)
+	at org.apache.spark.deploy.SparkSubmit.initializeLogIfNecessary(SparkSubmit.scala:76)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:84)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1120)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1129)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+Caused by: java.net.UnknownHostException: claude: Temporary failure in name resolution
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:930)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1543)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1665)
+	... 20 more
+ERROR StatusConsoleListener Could not determine local host name
+ java.net.UnknownHostException: claude: claude: Temporary failure in name resolution
+	at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1670)
+	at org.apache.logging.log4j.core.util.NetUtils.getLocalHostname(NetUtils.java:56)
+	at org.apache.logging.log4j.core.LoggerContext.lambda$setConfiguration$0(LoggerContext.java:615)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1705)
+	at org.apache.logging.log4j.core.LoggerContext.setConfiguration(LoggerContext.java:615)
+	at org.apache.logging.log4j.core.LoggerContext.reconfigure(LoggerContext.java:694)
+	at org.apache.logging.log4j.core.LoggerContext.setConfigLocation(LoggerContext.java:679)
+	at org.apache.spark.internal.Logging.initializeLogging(Logging.scala:139)
+	at org.apache.spark.internal.Logging.initializeLogIfNecessary(Logging.scala:114)
+	at org.apache.spark.internal.Logging.initializeLogIfNecessary$(Logging.scala:108)
+	at org.apache.spark.deploy.SparkSubmit.initializeLogIfNecessary(SparkSubmit.scala:76)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:84)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1120)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1129)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+Caused by: java.net.UnknownHostException: claude: Temporary failure in name resolution
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:930)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1543)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1665)
+	... 14 more
+ERROR StatusConsoleListener Could not determine local host name
+ java.net.UnknownHostException: claude: claude: Temporary failure in name resolution
+	at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1670)
+	at org.apache.logging.log4j.core.util.NetUtils.getLocalHostname(NetUtils.java:56)
+	at org.apache.logging.log4j.core.LoggerContext.lambda$setConfiguration$0(LoggerContext.java:615)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1705)
+	at org.apache.logging.log4j.core.LoggerContext.setConfiguration(LoggerContext.java:615)
+	at org.apache.logging.log4j.core.LoggerContext.reconfigure(LoggerContext.java:694)
+	at org.apache.logging.log4j.core.LoggerContext.reconfigure(LoggerContext.java:711)
+	at org.apache.spark.internal.Logging$.uninitialize(Logging.scala:220)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:967)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:194)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:217)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:91)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1120)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1129)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+Caused by: java.net.UnknownHostException: claude: Temporary failure in name resolution
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:930)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1543)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1665)
+	... 14 more
+26/10/29 14:37:29 INFO SparkContext: Running Spark version 3.5.1
+26/10/29 14:37:29 INFO SparkContext: OS info Linux, 6.8.0-138-generic, aarch64
+26/10/29 14:37:29 INFO SparkContext: Java version 11.0.32.1
+26/10/29 14:37:29 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/29 14:37:29 INFO ResourceUtils: ==============================================================
+26/10/29 14:37:29 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/10/29 14:37:29 INFO ResourceUtils: ==============================================================
+26/10/29 14:37:29 INFO SparkContext: Submitted application: SensorDataAnalysisExtendido
+26/10/29 14:37:29 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/10/29 14:37:29 INFO ResourceProfile: Limiting resource is cpu
+26/10/29 14:37:29 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/10/29 14:37:29 INFO SecurityManager: Changing view acls to: rcw-01fmygttej2tpqryxzkize6e
+26/10/29 14:37:29 INFO SecurityManager: Changing modify acls to: rcw-01fmygttej2tpqryxzkize6e
+26/10/29 14:37:29 INFO SecurityManager: Changing view acls groups to: 
+26/10/29 14:37:29 INFO SecurityManager: Changing modify acls groups to: 
+26/10/29 14:37:29 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: rcw-01fmygttej2tpqryxzkize6e; groups with view permissions: EMPTY; users with modify permissions: rcw-01fmygttej2tpqryxzkize6e; groups with modify permissions: EMPTY
+26/10/29 14:37:29 WARN MacAddressUtil: Failed to find a usable hardware address from the network interfaces; using random bytes: 4d:90:99:69:cc:a2:46:7b
+26/10/29 14:37:29 INFO Utils: Successfully started service 'sparkDriver' on port 37127.
+26/10/29 14:37:29 INFO SparkEnv: Registering MapOutputTracker
+26/10/29 14:37:29 INFO SparkEnv: Registering BlockManagerMaster
+26/10/29 14:37:29 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/10/29 14:37:29 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/10/29 14:37:29 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/10/29 14:37:29 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-a35f43ba-0f45-47ff-b2a6-1232f7aeca77
+26/10/29 14:37:29 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+26/10/29 14:37:29 INFO SparkEnv: Registering OutputCommitCoordinator
+26/10/29 14:37:29 INFO Executor: Starting executor ID driver on host localhost
+26/10/29 14:37:29 INFO Executor: OS info Linux, 6.8.0-138-generic, aarch64
+26/10/29 14:37:29 INFO Executor: Java version 11.0.32.1
+26/10/29 14:37:29 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/10/29 14:37:29 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@7ac2449d for default.
+26/10/29 14:37:29 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 41821.
+26/10/29 14:37:29 INFO NettyBlockTransferService: Server created on 127.0.0.1:41821
+26/10/29 14:37:29 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/10/29 14:37:29 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 127.0.0.1, 41821, None)
+26/10/29 14:37:29 INFO BlockManagerMasterEndpoint: Registering block manager 127.0.0.1:41821 with 434.4 MiB RAM, BlockManagerId(driver, 127.0.0.1, 41821, None)
+26/10/29 14:37:29 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 127.0.0.1, 41821, None)
+26/10/29 14:37:29 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 127.0.0.1, 41821, None)
+26/10/29 14:37:30 WARN ResolveWriteToStream: Temporary checkpoint location created which is deleted normally when the query didn't fail: /tmp/temporary-22823798-f136-49e1-85a2-8e5ec926c753. If it's required to delete it under any circumstances, please set spark.sql.streaming.forceDeleteTempCheckpointLocation to true. Important to know deleting temp checkpoint folder is best effort.
+26/10/29 14:37:30 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+26/10/29 14:37:31 WARN ResolveWriteToStream: Temporary checkpoint location created which is deleted normally when the query didn't fail: /tmp/temporary-ea2095e6-9aa2-4fc0-ab2c-e5b58ea2d71c. If it's required to delete it under any circumstances, please set spark.sql.streaming.forceDeleteTempCheckpointLocation to true. Important to know deleting temp checkpoint folder is best effort.
+26/10/29 14:37:31 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+26/10/29 14:37:31 WARN ResolveWriteToStream: Temporary checkpoint location created which is deleted normally when the query didn't fail: /tmp/temporary-817dac39-f045-4fed-af5e-7494244eb829. If it's required to delete it under any circumstances, please set spark.sql.streaming.forceDeleteTempCheckpointLocation to true. Important to know deleting temp checkpoint folder is best effort.
+26/10/29 14:37:31 WARN ResolveWriteToStream: spark.sql.adaptive.enabled is not supported in streaming DataFrames/Datasets and will be disabled.
+26/10/29 14:37:31 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+-------------------------------------------
+Batch: 0
+-------------------------------------------
++------+---+---------+-------+---------+--------+--------+--------+------+
+|inicio|fin|sensor_id|eventos|temp_prom|temp_min|temp_max|hum_prom|alerta|
++------+---+---------+-------+---------+--------+--------+--------+------+
++------+---+---------+-------+---------+--------+--------+--------+------+
+
+-------------------------------------------
+Batch: 0
+-------------------------------------------
++------+---------------+----------------+----------------+
+|inicio|eventos_totales|sensores_activos|temp_prom_global|
++------+---------------+----------------+----------------+
++------+---------------+----------------+----------------+
+
+[micro-lote 0] 0 filas -> salidas_streaming/ventanas.csv
+-------------------------------------------
+Batch: 1
+-------------------------------------------
+-------------------------------------------
+Batch: 1
+-------------------------------------------
+[micro-lote 1] 10 filas -> salidas_streaming/ventanas.csv
++--------+--------+---------+-------+---------+--------+--------+--------+---------+
+|inicio  |fin     |sensor_id|eventos|temp_prom|temp_min|temp_max|hum_prom|alerta   |
++--------+--------+---------+-------+---------+--------+--------+--------+---------+
+|14:37:00|14:38:00|1        |4      |23.97    |20.08   |28.43   |55.69   |         |
+|14:37:00|14:38:00|9        |4      |28.06    |26.51   |28.78   |57.91   |TEMP ALTA|
+|14:37:00|14:38:00|7        |4      |23.01    |20.32   |25.58   |55.25   |         |
+|14:37:00|14:38:00|6        |4      |24.37    |21.61   |28.02   |45.45   |         |
+|14:37:00|14:38:00|8        |4      |23.6     |22.32   |25.66   |48.76   |         |
+|14:37:00|14:38:00|10       |4      |25.53    |20.27   |28.85   |50.75   |         |
+|14:37:00|14:38:00|2        |4      |24.98    |20.71   |28.87   |44.01   |         |
+|14:37:00|14:38:00|4        |4      |24.1     |21.04   |26.22   |50.79   |         |
+|14:37:00|14:38:00|5        |4      |24.62    |22.82   |28.56   |50.47   |         |
+|14:37:00|14:38:00|3        |4      |24.74    |22.15   |26.41   |58.52   |         |
++--------+--------+---------+-------+---------+--------+--------+--------+---------+
+
++--------+---------------+----------------+----------------+
+|inicio  |eventos_totales|sensores_activos|temp_prom_global|
++--------+---------------+----------------+----------------+
+|14:37:00|40             |10              |24.31           |
++--------+---------------+----------------+----------------+
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++--------+---------------+----------------+----------------+
+|inicio  |eventos_totales|sensores_activos|temp_prom_global|
++--------+---------------+----------------+----------------+
+|14:37:00|90             |10              |24.63           |
++--------+---------------+----------------+----------------+
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|inicio  |fin     |sensor_id|eventos|temp_prom|temp_min|temp_max|hum_prom|alerta|
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|14:37:00|14:38:00|1        |9      |25.18    |20.08   |29.82   |58.12   |      |
+|14:37:00|14:38:00|9        |9      |26.48    |20.83   |28.78   |53.08   |      |
+|14:37:00|14:38:00|7        |9      |23.65    |20.32   |29.06   |56.23   |      |
+|14:37:00|14:38:00|6        |9      |24.32    |21.61   |28.02   |49.11   |      |
+|14:37:00|14:38:00|8        |9      |24.26    |21.42   |29.15   |55.02   |      |
+|14:37:00|14:38:00|10       |9      |24.31    |20.27   |28.85   |45.2    |      |
+|14:37:00|14:38:00|2        |9      |24.03    |20.33   |28.87   |48.53   |      |
+|14:37:00|14:38:00|4        |9      |24.34    |21.04   |26.56   |49.96   |      |
+|14:37:00|14:38:00|5        |9      |25.45    |20.74   |29.86   |47.51   |      |
+|14:37:00|14:38:00|3        |9      |24.37    |20.15   |28.45   |57.19   |      |
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+
+[micro-lote 2] 10 filas -> salidas_streaming/ventanas.csv
+-------------------------------------------
+Batch: 3
+-------------------------------------------
++--------+---------------+----------------+----------------+
+|inicio  |eventos_totales|sensores_activos|temp_prom_global|
++--------+---------------+----------------+----------------+
+|14:37:00|140            |10              |24.81           |
++--------+---------------+----------------+----------------+
+
+-------------------------------------------
+Batch: 3
+-------------------------------------------
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|inicio  |fin     |sensor_id|eventos|temp_prom|temp_min|temp_max|hum_prom|alerta|
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|14:37:00|14:38:00|1        |14     |24.79    |20.08   |29.82   |51.87   |      |
+|14:37:00|14:38:00|9        |14     |25.59    |20.31   |29.1    |52.24   |      |
+|14:37:00|14:38:00|7        |14     |24.01    |20.32   |29.06   |50.21   |      |
+|14:37:00|14:38:00|6        |14     |24.72    |20.27   |28.57   |49.28   |      |
+|14:37:00|14:38:00|8        |14     |24.87    |21.42   |29.47   |53.33   |      |
+|14:37:00|14:38:00|10       |14     |23.57    |20.27   |28.85   |47.11   |      |
+|14:37:00|14:38:00|2        |14     |24.05    |20.12   |28.87   |48.73   |      |
+|14:37:00|14:38:00|4        |14     |24.53    |20.01   |28.05   |48.23   |      |
+|14:37:00|14:38:00|5        |14     |25.54    |20.74   |29.86   |51.23   |      |
+|14:37:00|14:38:00|3        |14     |25.1     |20.15   |29.73   |54.59   |      |
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+
+[micro-lote 3] 10 filas -> salidas_streaming/ventanas.csv
+-------------------------------------------
+Batch: 4
+-------------------------------------------
++--------+---------------+----------------+----------------+
+|inicio  |eventos_totales|sensores_activos|temp_prom_global|
++--------+---------------+----------------+----------------+
+|14:37:00|144            |10              |24.82           |
+|14:38:00|46             |10              |25.18           |
++--------+---------------+----------------+----------------+
+
+-------------------------------------------
+Batch: 4
+-------------------------------------------
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|inicio  |fin     |sensor_id|eventos|temp_prom|temp_min|temp_max|hum_prom|alerta|
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|14:37:00|14:38:00|1        |15     |24.71    |20.08   |29.82   |50.9    |      |
+|14:38:00|14:39:00|7        |5      |21.91    |20.25   |25.14   |46.71   |      |
+|14:38:00|14:39:00|6        |5      |23.57    |20.55   |29.62   |47.84   |      |
+|14:38:00|14:39:00|5        |5      |27.12    |26.15   |29.32   |45.71   |      |
+|14:38:00|14:39:00|9        |5      |25.12    |22.78   |27.16   |54.3    |      |
+|14:38:00|14:39:00|1        |4      |25.6     |20.7    |29.26   |48.98   |      |
+|14:37:00|14:38:00|2        |15     |24.04    |20.12   |28.87   |49.03   |      |
+|14:38:00|14:39:00|4        |4      |24.7     |21.49   |27.12   |49.03   |      |
+|14:38:00|14:39:00|8        |5      |24.85    |21.39   |29.72   |53.64   |      |
+|14:37:00|14:38:00|4        |15     |24.46    |20.01   |28.05   |48.51   |      |
+|14:38:00|14:39:00|3        |4      |24.25    |20.62   |29.41   |42.23   |      |
+|14:38:00|14:39:00|10       |5      |25.32    |21.8    |29.14   |52.81   |      |
+|14:38:00|14:39:00|2        |4      |25.28    |22.94   |27.19   |49.72   |      |
+|14:37:00|14:38:00|3        |15     |24.88    |20.15   |29.73   |53.93   |      |
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+
+[micro-lote 4] 20 filas -> salidas_streaming/ventanas.csv
+-------------------------------------------
+Batch: 5
+-------------------------------------------
++--------+---------------+----------------+----------------+
+|inicio  |eventos_totales|sensores_activos|temp_prom_global|
++--------+---------------+----------------+----------------+
+|14:38:00|96             |10              |25.23           |
++--------+---------------+----------------+----------------+
+
+-------------------------------------------
+Batch: 5
+-------------------------------------------
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|inicio  |fin     |sensor_id|eventos|temp_prom|temp_min|temp_max|hum_prom|alerta|
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|14:38:00|14:39:00|7        |10     |23.05    |20.03   |29.3    |46.68   |      |
+|14:38:00|14:39:00|6        |10     |25.08    |20.55   |29.8    |46.29   |      |
+|14:38:00|14:39:00|1        |9      |24.86    |20.58   |29.26   |44.85   |      |
+|14:38:00|14:39:00|5        |10     |26.44    |21.97   |29.32   |44.76   |      |
+|14:38:00|14:39:00|9        |10     |24.23    |20.22   |27.16   |57.01   |      |
+|14:38:00|14:39:00|4        |9      |25.02    |21.49   |29.49   |50.54   |      |
+|14:38:00|14:39:00|8        |10     |25.53    |21.39   |29.9    |51.21   |      |
+|14:38:00|14:39:00|3        |9      |25.54    |20.62   |29.92   |47.55   |      |
+|14:38:00|14:39:00|2        |9      |26.47    |22.94   |29.98   |54.94   |      |
+|14:38:00|14:39:00|10       |10     |24.62    |20.63   |29.14   |51.51   |      |
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+
+[micro-lote 5] 20 filas -> salidas_streaming/ventanas.csv
+-------------------------------------------
+Batch: 6
+-------------------------------------------
++--------+---------------+----------------+----------------+
+|inicio  |eventos_totales|sensores_activos|temp_prom_global|
++--------+---------------+----------------+----------------+
+|14:38:00|146            |10              |25.33           |
++--------+---------------+----------------+----------------+
+
+-------------------------------------------
+Batch: 6
+-------------------------------------------
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|inicio  |fin     |sensor_id|eventos|temp_prom|temp_min|temp_max|hum_prom|alerta|
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|14:38:00|14:39:00|7        |15     |23.46    |20.03   |29.68   |47.23   |      |
+|14:38:00|14:39:00|6        |15     |24.87    |20.55   |29.8    |46.04   |      |
+|14:38:00|14:39:00|1        |14     |25.05    |20.58   |29.26   |48.08   |      |
+|14:38:00|14:39:00|5        |15     |26.15    |21.97   |29.81   |46.6    |      |
+|14:38:00|14:39:00|9        |15     |24.48    |20.22   |27.85   |55.09   |      |
+|14:38:00|14:39:00|4        |14     |24.59    |20.87   |29.49   |50.83   |      |
+|14:38:00|14:39:00|8        |15     |26.18    |21.39   |29.96   |46.61   |      |
+|14:38:00|14:39:00|3        |14     |24.61    |20.33   |29.92   |47.55   |      |
+|14:38:00|14:39:00|2        |14     |26.91    |22.94   |29.98   |54.66   |      |
+|14:38:00|14:39:00|10       |15     |24.79    |20.63   |29.14   |52.96   |      |
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+
+[micro-lote 6] 20 filas -> salidas_streaming/ventanas.csv
+-------------------------------------------
+Batch: 7
+-------------------------------------------
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|inicio  |fin     |sensor_id|eventos|temp_prom|temp_min|temp_max|hum_prom|alerta|
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|14:38:00|14:39:00|7        |20     |24.3     |20.03   |29.68   |49.0    |      |
+|14:38:00|14:39:00|6        |20     |25.21    |20.55   |29.87   |48.59   |      |
+|14:38:00|14:39:00|1        |19     |25.04    |20.58   |29.98   |47.56   |      |
+|14:38:00|14:39:00|5        |20     |26.28    |21.97   |29.81   |46.15   |      |
+|14:38:00|14:39:00|9        |20     |25.66    |20.22   |29.78   |54.65   |      |
+|14:38:00|14:39:00|4        |19     |24.4     |20.87   |29.49   |52.79   |      |
+|14:38:00|14:39:00|8        |20     |25.69    |20.24   |29.96   |45.89   |      |
+|14:38:00|14:39:00|3        |19     |25.05    |20.33   |29.92   |46.67   |      |
+|14:38:00|14:39:00|2        |19     |26.68    |20.09   |29.98   |55.69   |      |
+|14:38:00|14:39:00|10       |20     |25.56    |20.63   |29.87   |51.21   |      |
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+
+-------------------------------------------
+Batch: 7
+-------------------------------------------
++--------+---------------+----------------+----------------+
+|inicio  |eventos_totales|sensores_activos|temp_prom_global|
++--------+---------------+----------------+----------------+
+|14:38:00|196            |10              |25.31           |
++--------+---------------+----------------+----------------+
+
+[micro-lote 7] 20 filas -> salidas_streaming/ventanas.csv
+-------------------------------------------
+Batch: 8
+-------------------------------------------
++--------+---------------+----------------+----------------+
+|inicio  |eventos_totales|sensores_activos|temp_prom_global|
++--------+---------------+----------------+----------------+
+|14:38:00|246            |10              |25.28           |
++--------+---------------+----------------+----------------+
+
+-------------------------------------------
+Batch: 8
+-------------------------------------------
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|inicio  |fin     |sensor_id|eventos|temp_prom|temp_min|temp_max|hum_prom|alerta|
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|14:38:00|14:39:00|7        |25     |24.56    |20.02   |29.79   |49.96   |      |
+|14:38:00|14:39:00|6        |25     |25.09    |20.55   |29.87   |49.67   |      |
+|14:38:00|14:39:00|1        |24     |25.06    |20.58   |29.98   |46.6    |      |
+|14:38:00|14:39:00|5        |25     |25.88    |21.57   |29.81   |46.79   |      |
+|14:38:00|14:39:00|9        |25     |26.2     |20.22   |29.9    |55.19   |      |
+|14:38:00|14:39:00|4        |24     |24.37    |20.87   |29.49   |52.12   |      |
+|14:38:00|14:39:00|8        |25     |25.01    |20.23   |29.96   |45.78   |      |
+|14:38:00|14:39:00|3        |24     |25.09    |20.33   |29.92   |47.04   |      |
+|14:38:00|14:39:00|2        |24     |26.56    |20.09   |29.98   |55.16   |      |
+|14:38:00|14:39:00|10       |25     |25.74    |20.63   |29.87   |50.49   |      |
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+
+[micro-lote 8] 20 filas -> salidas_streaming/ventanas.csv
+-------------------------------------------
+Batch: 9
+-------------------------------------------
++--------+---------------+----------------+----------------+
+|inicio  |eventos_totales|sensores_activos|temp_prom_global|
++--------+---------------+----------------+----------------+
+|14:38:00|296            |10              |25.16           |
++--------+---------------+----------------+----------------+
+
+-------------------------------------------
+Batch: 9
+-------------------------------------------
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|inicio  |fin     |sensor_id|eventos|temp_prom|temp_min|temp_max|hum_prom|alerta|
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|14:38:00|14:39:00|7        |30     |24.63    |20.02   |29.79   |50.08   |      |
+|14:38:00|14:39:00|6        |30     |25.15    |20.55   |29.87   |51.26   |      |
+|14:38:00|14:39:00|1        |29     |25.09    |20.58   |29.98   |46.59   |      |
+|14:38:00|14:39:00|5        |30     |26.03    |21.57   |29.96   |45.26   |      |
+|14:38:00|14:39:00|9        |30     |26.24    |20.22   |29.9    |54.01   |      |
+|14:38:00|14:39:00|4        |29     |24.51    |20.87   |29.49   |50.92   |      |
+|14:38:00|14:39:00|8        |30     |25.07    |20.23   |29.96   |46.12   |      |
+|14:38:00|14:39:00|3        |29     |24.92    |20.33   |29.92   |46.12   |      |
+|14:38:00|14:39:00|2        |29     |26.45    |20.09   |29.98   |53.43   |      |
+|14:38:00|14:39:00|10       |30     |25.24    |20.31   |29.87   |52.54   |      |
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+
+[micro-lote 9] 20 filas -> salidas_streaming/ventanas.csv
+-------------------------------------------
+Batch: 10
+-------------------------------------------
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|inicio  |fin     |sensor_id|eventos|temp_prom|temp_min|temp_max|hum_prom|alerta|
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|14:39:00|14:40:00|7        |5      |24.09    |22.3    |28.05   |43.12   |      |
+|14:39:00|14:40:00|6        |5      |26.18    |23.5    |29.05   |48.58   |      |
+|14:39:00|14:40:00|10       |5      |25.03    |21.36   |29.02   |53.36   |      |
+|14:39:00|14:40:00|2        |4      |24.85    |20.87   |29.47   |50.01   |      |
+|14:38:00|14:39:00|1        |30     |24.92    |20.01   |29.98   |46.97   |      |
+|14:39:00|14:40:00|5        |5      |25.88    |23.73   |29.51   |53.7    |      |
+|14:39:00|14:40:00|4        |4      |23.6     |20.59   |26.03   |54.56   |      |
+|14:39:00|14:40:00|9        |5      |25.61    |22.82   |29.82   |50.1    |      |
+|14:39:00|14:40:00|3        |4      |25.88    |22.13   |29.02   |46.55   |      |
+|14:39:00|14:40:00|1        |4      |25.72    |20.25   |29.19   |49.97   |      |
+|14:38:00|14:39:00|4        |30     |24.4     |20.87   |29.49   |50.61   |      |
+|14:38:00|14:39:00|2        |30     |26.44    |20.09   |29.98   |53.32   |      |
+|14:39:00|14:40:00|8        |5      |25.74    |24.65   |27.32   |51.99   |      |
+|14:38:00|14:39:00|3        |30     |24.91    |20.33   |29.92   |45.99   |      |
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+
+-------------------------------------------
+Batch: 10
+-------------------------------------------
++--------+---------------+----------------+----------------+
+|inicio  |eventos_totales|sensores_activos|temp_prom_global|
++--------+---------------+----------------+----------------+
+|14:38:00|300            |10              |25.16           |
+|14:39:00|46             |10              |25.33           |
++--------+---------------+----------------+----------------+
+
+[micro-lote 10] 30 filas -> salidas_streaming/ventanas.csv
+-------------------------------------------
+Batch: 11
+-------------------------------------------
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|inicio  |fin     |sensor_id|eventos|temp_prom|temp_min|temp_max|hum_prom|alerta|
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|14:39:00|14:40:00|7        |10     |24.47    |21.01   |28.05   |47.18   |      |
+|14:39:00|14:40:00|2        |9      |24.89    |20.87   |29.47   |47.26   |      |
+|14:39:00|14:40:00|6        |10     |26.95    |23.5    |29.43   |47.94   |      |
+|14:39:00|14:40:00|10       |10     |26.1     |20.15   |29.92   |52.79   |      |
+|14:39:00|14:40:00|5        |10     |24.45    |20.01   |29.51   |54.27   |      |
+|14:39:00|14:40:00|4        |9      |24.76    |20.59   |29.74   |49.06   |      |
+|14:39:00|14:40:00|1        |9      |23.47    |20.25   |29.19   |50.92   |      |
+|14:39:00|14:40:00|9        |10     |25.25    |22.82   |29.82   |49.67   |      |
+|14:39:00|14:40:00|3        |9      |25.39    |22.13   |29.02   |47.75   |      |
+|14:39:00|14:40:00|8        |10     |24.42    |20.44   |27.32   |45.6    |      |
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+
+-------------------------------------------
+Batch: 11
+-------------------------------------------
++--------+---------------+----------------+----------------+
+|inicio  |eventos_totales|sensores_activos|temp_prom_global|
++--------+---------------+----------------+----------------+
+|14:39:00|96             |10              |25.37           |
++--------+---------------+----------------+----------------+
+
+[micro-lote 11] 30 filas -> salidas_streaming/ventanas.csv
+-------------------------------------------
+Batch: 12
+-------------------------------------------
++--------+---------------+----------------+----------------+
+|inicio  |eventos_totales|sensores_activos|temp_prom_global|
++--------+---------------+----------------+----------------+
+|14:39:00|146            |10              |25.23           |
++--------+---------------+----------------+----------------+
+
+-------------------------------------------
+Batch: 12
+-------------------------------------------
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|inicio  |fin     |sensor_id|eventos|temp_prom|temp_min|temp_max|hum_prom|alerta|
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+|14:39:00|14:40:00|7        |15     |24.67    |21.01   |29.65   |48.38   |      |
+|14:39:00|14:40:00|2        |14     |24.82    |20.87   |29.66   |49.54   |      |
+|14:39:00|14:40:00|6        |15     |26.73    |20.43   |29.69   |49.49   |      |
+|14:39:00|14:40:00|10       |15     |25.99    |20.15   |29.92   |54.31   |      |
+|14:39:00|14:40:00|5        |15     |25.37    |20.01   |29.61   |52.01   |      |
+|14:39:00|14:40:00|4        |14     |23.71    |20.3    |29.74   |47.53   |      |
+|14:39:00|14:40:00|1        |14     |23.69    |20.14   |29.19   |48.71   |      |
+|14:39:00|14:40:00|9        |15     |25.06    |21.12   |29.82   |52.62   |      |
+|14:39:00|14:40:00|3        |14     |24.93    |20.42   |29.02   |49.0    |      |
+|14:39:00|14:40:00|8        |15     |24.73    |20.44   |29.84   |48.25   |      |
++--------+--------+---------+-------+---------+--------+--------+--------+------+
+
+[micro-lote 12] 30 filas -> salidas_streaming/ventanas.csv
+EXIT_CODE=0
+Terminado: 2026-10-29 14:39:31 UTC

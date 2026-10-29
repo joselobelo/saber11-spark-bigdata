@@ -1,0 +1,14 @@
+# Datos descargados (son grandes: se obtienen con datos/descargar_saber11.py)
+datos/*.csv
+*.parquet/
+# Salidas de streaming y temporales
+salidas_streaming/
+spark-warehouse/
+metastore_db/
+derby.log
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store

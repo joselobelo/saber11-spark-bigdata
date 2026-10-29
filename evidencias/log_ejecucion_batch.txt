@@ -1,0 +1,414 @@
+==============================================================
+ Tarea 3 - Big Data (UNAD 202016911) - Apache Spark
+ Aplicacion batch: Resultados unicos Saber 11
+ Fecha de ejecucion : 2026-10-29 14:32:07 UTC
+ PySpark            : 3.5.1
+ Java               : openjdk version "11.0.32.1" 2026-08-18
+ CPU / RAM          : 4 nucleos / 3 GiB
+ Entrada            : datos/prueba_saber11.csv (63M, 320298 filas)
+ NOTA: datos sinteticos con el mismo esquema de 21 columnas de la fuente.
+==============================================================
+
+$ spark-submit --master local[4] --driver-memory 2g batch/saber11_batch.py \
+      --input datos/prueba_saber11.csv --output salidas \
+      --parquet salidas_parquet/saber11_limpio.parquet
+
+Picked up JAVA_TOOL_OPTIONS: -javaagent:/opt/cowork-node-tools/node_modules/@anthropic-ai/sandbox-runtime/vendor/java-proxy-agent/srt-proxy-agent.jar
+Picked up JAVA_TOOL_OPTIONS: -javaagent:/opt/cowork-node-tools/node_modules/@anthropic-ai/sandbox-runtime/vendor/java-proxy-agent/srt-proxy-agent.jar
+ERROR StatusLogger Could not determine local host name
+ java.net.UnknownHostException: claude: claude: Temporary failure in name resolution
+	at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1670)
+	at org.apache.logging.log4j.core.util.NetUtils.getLocalHostname(NetUtils.java:56)
+	at org.apache.logging.log4j.core.LoggerContext.lambda$setConfiguration$0(LoggerContext.java:615)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1705)
+	at org.apache.logging.log4j.core.LoggerContext.setConfiguration(LoggerContext.java:615)
+	at org.apache.logging.log4j.core.LoggerContext.reconfigure(LoggerContext.java:694)
+	at org.apache.logging.log4j.core.LoggerContext.reconfigure(LoggerContext.java:711)
+	at org.apache.logging.log4j.core.LoggerContext.start(LoggerContext.java:253)
+	at org.apache.logging.log4j.core.impl.Log4jContextFactory.getContext(Log4jContextFactory.java:245)
+	at org.apache.logging.log4j.core.impl.Log4jContextFactory.getContext(Log4jContextFactory.java:47)
+	at org.apache.logging.log4j.LogManager.getContext(LogManager.java:176)
+	at org.apache.logging.log4j.LogManager.getLogger(LogManager.java:666)
+	at org.apache.logging.log4j.LogManager.getRootLogger(LogManager.java:700)
+	at org.apache.spark.internal.Logging.initializeLogging(Logging.scala:129)
+	at org.apache.spark.internal.Logging.initializeLogIfNecessary(Logging.scala:114)
+	at org.apache.spark.internal.Logging.initializeLogIfNecessary$(Logging.scala:108)
+	at org.apache.spark.deploy.SparkSubmit.initializeLogIfNecessary(SparkSubmit.scala:76)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:84)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1120)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1129)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+Caused by: java.net.UnknownHostException: claude: Temporary failure in name resolution
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:930)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1543)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1665)
+	... 20 more
+ERROR StatusConsoleListener Could not determine local host name
+ java.net.UnknownHostException: claude: claude: Temporary failure in name resolution
+	at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1670)
+	at org.apache.logging.log4j.core.util.NetUtils.getLocalHostname(NetUtils.java:56)
+	at org.apache.logging.log4j.core.LoggerContext.lambda$setConfiguration$0(LoggerContext.java:615)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1705)
+	at org.apache.logging.log4j.core.LoggerContext.setConfiguration(LoggerContext.java:615)
+	at org.apache.logging.log4j.core.LoggerContext.reconfigure(LoggerContext.java:694)
+	at org.apache.logging.log4j.core.LoggerContext.setConfigLocation(LoggerContext.java:679)
+	at org.apache.spark.internal.Logging.initializeLogging(Logging.scala:139)
+	at org.apache.spark.internal.Logging.initializeLogIfNecessary(Logging.scala:114)
+	at org.apache.spark.internal.Logging.initializeLogIfNecessary$(Logging.scala:108)
+	at org.apache.spark.deploy.SparkSubmit.initializeLogIfNecessary(SparkSubmit.scala:76)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:84)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1120)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1129)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+Caused by: java.net.UnknownHostException: claude: Temporary failure in name resolution
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:930)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1543)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1665)
+	... 14 more
+ERROR StatusConsoleListener Could not determine local host name
+ java.net.UnknownHostException: claude: claude: Temporary failure in name resolution
+	at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1670)
+	at org.apache.logging.log4j.core.util.NetUtils.getLocalHostname(NetUtils.java:56)
+	at org.apache.logging.log4j.core.LoggerContext.lambda$setConfiguration$0(LoggerContext.java:615)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1705)
+	at org.apache.logging.log4j.core.LoggerContext.setConfiguration(LoggerContext.java:615)
+	at org.apache.logging.log4j.core.LoggerContext.reconfigure(LoggerContext.java:694)
+	at org.apache.logging.log4j.core.LoggerContext.reconfigure(LoggerContext.java:711)
+	at org.apache.spark.internal.Logging$.uninitialize(Logging.scala:220)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:967)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:194)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:217)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:91)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1120)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1129)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+Caused by: java.net.UnknownHostException: claude: Temporary failure in name resolution
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:930)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1543)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1533)
+	at java.base/java.net.InetAddress.getLocalHost(InetAddress.java:1665)
+	... 14 more
+26/10/29 14:32:08 INFO SparkContext: Running Spark version 3.5.1
+26/10/29 14:32:08 INFO SparkContext: OS info Linux, 6.8.0-138-generic, aarch64
+26/10/29 14:32:08 INFO SparkContext: Java version 11.0.32.1
+26/10/29 14:32:08 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/29 14:32:08 INFO ResourceUtils: ==============================================================
+26/10/29 14:32:08 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/10/29 14:32:08 INFO ResourceUtils: ==============================================================
+26/10/29 14:32:08 INFO SparkContext: Submitted application: Saber11-Batch-Tarea3
+26/10/29 14:32:08 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/10/29 14:32:08 INFO ResourceProfile: Limiting resource is cpu
+26/10/29 14:32:08 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/10/29 14:32:08 INFO SecurityManager: Changing view acls to: rcw-01fmygttej2tpqryxzkize6e
+26/10/29 14:32:08 INFO SecurityManager: Changing modify acls to: rcw-01fmygttej2tpqryxzkize6e
+26/10/29 14:32:08 INFO SecurityManager: Changing view acls groups to: 
+26/10/29 14:32:08 INFO SecurityManager: Changing modify acls groups to: 
+26/10/29 14:32:08 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: rcw-01fmygttej2tpqryxzkize6e; groups with view permissions: EMPTY; users with modify permissions: rcw-01fmygttej2tpqryxzkize6e; groups with modify permissions: EMPTY
+26/10/29 14:32:09 WARN MacAddressUtil: Failed to find a usable hardware address from the network interfaces; using random bytes: a8:59:c7:e2:8b:20:48:72
+26/10/29 14:32:09 INFO Utils: Successfully started service 'sparkDriver' on port 41547.
+26/10/29 14:32:09 INFO SparkEnv: Registering MapOutputTracker
+26/10/29 14:32:09 INFO SparkEnv: Registering BlockManagerMaster
+26/10/29 14:32:09 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/10/29 14:32:09 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/10/29 14:32:09 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/10/29 14:32:09 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-c9aa24fd-8cbd-40c8-b0a7-6983025e712d
+26/10/29 14:32:09 INFO MemoryStore: MemoryStore started with capacity 1048.8 MiB
+26/10/29 14:32:09 INFO SparkEnv: Registering OutputCommitCoordinator
+26/10/29 14:32:09 INFO Executor: Starting executor ID driver on host localhost
+26/10/29 14:32:09 INFO Executor: OS info Linux, 6.8.0-138-generic, aarch64
+26/10/29 14:32:09 INFO Executor: Java version 11.0.32.1
+26/10/29 14:32:09 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/10/29 14:32:09 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@7330ba73 for default.
+26/10/29 14:32:09 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 38403.
+26/10/29 14:32:09 INFO NettyBlockTransferService: Server created on 127.0.0.1:38403
+26/10/29 14:32:09 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/10/29 14:32:09 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 127.0.0.1, 38403, None)
+26/10/29 14:32:09 INFO BlockManagerMasterEndpoint: Registering block manager 127.0.0.1:38403 with 1048.8 MiB RAM, BlockManagerId(driver, 127.0.0.1, 38403, None)
+26/10/29 14:32:09 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 127.0.0.1, 38403, None)
+26/10/29 14:32:09 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 127.0.0.1, 38403, None)
+Spark 3.5.1 · master local[4]
+
+==============================================================================
+  1. CARGA DEL CONJUNTO DE DATOS   [t = 0.5 s]
+==============================================================================
+Fuente: datos/prueba_saber11.csv
+Particiones de lectura: 4
+root
+ |-- periodo: string (nullable = true)
+ |-- estu_consecutivo: string (nullable = true)
+ |-- estu_genero: string (nullable = true)
+ |-- cole_naturaleza: string (nullable = true)
+ |-- cole_area_ubicacion: string (nullable = true)
+ |-- cole_calendario: string (nullable = true)
+ |-- cole_jornada: string (nullable = true)
+ |-- cole_caracter: string (nullable = true)
+ |-- cole_depto_ubicacion: string (nullable = true)
+ |-- cole_mcpio_ubicacion: string (nullable = true)
+ |-- fami_estratovivienda: string (nullable = true)
+ |-- fami_educacionmadre: string (nullable = true)
+ |-- fami_educacionpadre: string (nullable = true)
+ |-- fami_tieneinternet: string (nullable = true)
+ |-- fami_tienecomputador: string (nullable = true)
+ |-- punt_lectura_critica: string (nullable = true)
+ |-- punt_matematicas: string (nullable = true)
+ |-- punt_sociales_ciudadanas: string (nullable = true)
+ |-- punt_c_naturales: string (nullable = true)
+ |-- punt_ingles: string (nullable = true)
+ |-- punt_global: string (nullable = true)
+
+
+==============================================================================
+  2. PERFIL DE CALIDAD DE LOS DATOS   [t = 2.3 s]
+==============================================================================
+Filas brutas: 320,298   Columnas: 21
+Estudiantes únicos (estu_consecutivo): 200,000
+Filas duplicadas: 120,298 (37.6 %)
+
+Filas y estudiantes únicos por periodo:
++-------+------+------+----------+
+|periodo|filas |unicos|duplicadas|
++-------+------+------+----------+
+|20191  |19997 |19997 |0         |
+|20194  |120874|60437 |60437     |
+|20201  |19857 |19857 |0         |
+|20211  |19941 |19941 |0         |
+|20221  |19907 |19907 |0         |
+|20224  |119722|59861 |59861     |
++-------+------+------+----------+
+
+Valores nulos o vacíos por columna:
+  periodo                               0  ( 0.00 %)
+  estu_consecutivo                      0  ( 0.00 %)
+  estu_genero                      63,623  (19.86 %)
+  cole_naturaleza                       0  ( 0.00 %)
+  cole_area_ubicacion                   0  ( 0.00 %)
+  cole_calendario                       0  ( 0.00 %)
+  cole_jornada                          0  ( 0.00 %)
+  cole_caracter                         0  ( 0.00 %)
+  cole_depto_ubicacion                  0  ( 0.00 %)
+  cole_mcpio_ubicacion                  0  ( 0.00 %)
+  fami_estratovivienda             39,994  (12.49 %)
+  fami_educacionmadre              24,587  ( 7.68 %)
+  fami_educacionpadre              24,633  ( 7.69 %)
+  fami_tieneinternet              107,764  (33.64 %)
+  fami_tienecomputador            107,296  (33.50 %)
+  punt_lectura_critica                  0  ( 0.00 %)
+  punt_matematicas                      0  ( 0.00 %)
+  punt_sociales_ciudadanas              0  ( 0.00 %)
+  punt_c_naturales                      0  ( 0.00 %)
+  punt_ingles                           0  ( 0.00 %)
+  punt_global                           0  ( 0.00 %)
+
+==============================================================================
+  3. LIMPIEZA Y TRANSFORMACIÓN   [t = 5.4 s]
+==============================================================================
+3.1 Duplicados eliminados (dropDuplicates por estu_consecutivo): 120,298
+3.3 Filas sin puntaje global válido eliminadas: 0
+3.5 Columnas derivadas: anio, estrato (0 = sin estrato), internet, computador,
+    educacion_madre (sin 'No sabe'/'No Aplica'), nivel_desempeno
+Registros limpios: 200,000
+26/10/29 14:32:14 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
++-------+----+----------+----------------+-----------+----------+------+------------+-------+------------+--------------+---------------+---------------+--------------------+----------------+------------------------+----------------+-----------+-----------+
+|periodo|anio|calendario|estu_consecutivo|estu_genero|naturaleza|zona  |departamento|estrato|internet    |computador    |educacion_madre|nivel_desempeno|punt_lectura_critica|punt_matematicas|punt_sociales_ciudadanas|punt_c_naturales|punt_ingles|punt_global|
++-------+----+----------+----------------+-----------+----------+------+------------+-------+------------+--------------+---------------+---------------+--------------------+----------------+------------------------+----------------+-----------+-----------+
+|20191  |2019|A         |SB11201910000096|F          |OFICIAL   |URBANO|ANTIOQUIA   |3      |NULL        |NULL          |Postgrado      |Bajo (<200)    |39                  |29              |24                      |31              |43         |158        |
+|20191  |2019|A         |SB11201910000142|M          |OFICIAL   |URBANO|ATLANTICO   |5      |Con internet|Con computador|Postgrado      |Alto (300-399) |50                  |70              |67                      |64              |64         |314        |
+|20191  |2019|OTRO      |SB11201910000176|F          |NO OFICIAL|URBANO|CALDAS      |NULL   |NULL        |Con computador|Postgrado      |Medio (200-299)|41                  |36              |42                      |43              |40         |202        |
+|20191  |2019|A         |SB11201910000188|F          |OFICIAL   |RURAL |ATLANTICO   |3      |Con internet|NULL          |Postgrado      |Alto (300-399) |70                  |63              |62                      |58              |56         |313        |
+|20191  |2019|A         |SB11201910000202|F          |OFICIAL   |URBANO|SUCRE       |4      |Sin internet|Con computador|Ninguno        |Medio (200-299)|48                  |43              |38                      |49              |34         |218        |
++-------+----+----------+----------------+-----------+----------+------+------------+-------+------------+--------------+---------------+---------------+--------------------+----------------+------------------------+----------------+-----------+-----------+
+only showing top 5 rows
+
+26/10/29 14:32:18 WARN FileUtil: Failed to delete file or dir [/sessions/rcw-01fmygttej2tpqryxzkize6e/mnt/BIG DATA (23 oct)/Entregables_Tarea3/2_Repositorio_codigo/saber11-spark-bigdata/salidas_parquet/saber11_limpio.parquet/_temporary/0/_temporary]: it still exists.
+26/10/29 14:32:18 WARN FileUtil: Failed to delete file or dir [/sessions/rcw-01fmygttej2tpqryxzkize6e/mnt/BIG DATA (23 oct)/Entregables_Tarea3/2_Repositorio_codigo/saber11-spark-bigdata/salidas_parquet/saber11_limpio.parquet/_temporary/0/task_202610291432171067797773598110307_0050_m_000003]: it still exists.
+26/10/29 14:32:18 WARN FileUtil: Failed to delete file or dir [/sessions/rcw-01fmygttej2tpqryxzkize6e/mnt/BIG DATA (23 oct)/Entregables_Tarea3/2_Repositorio_codigo/saber11-spark-bigdata/salidas_parquet/saber11_limpio.parquet/_temporary/0/task_202610291432171067797773598110307_0050_m_000004]: it still exists.
+26/10/29 14:32:18 WARN FileUtil: Failed to delete file or dir [/sessions/rcw-01fmygttej2tpqryxzkize6e/mnt/BIG DATA (23 oct)/Entregables_Tarea3/2_Repositorio_codigo/saber11-spark-bigdata/salidas_parquet/saber11_limpio.parquet/_temporary/0/task_202610291432171067797773598110307_0050_m_000005]: it still exists.
+26/10/29 14:32:18 WARN FileUtil: Failed to delete file or dir [/sessions/rcw-01fmygttej2tpqryxzkize6e/mnt/BIG DATA (23 oct)/Entregables_Tarea3/2_Repositorio_codigo/saber11-spark-bigdata/salidas_parquet/saber11_limpio.parquet/_temporary/0/task_202610291432171067797773598110307_0050_m_000002]: it still exists.
+26/10/29 14:32:18 WARN FileUtil: Failed to delete file or dir [/sessions/rcw-01fmygttej2tpqryxzkize6e/mnt/BIG DATA (23 oct)/Entregables_Tarea3/2_Repositorio_codigo/saber11-spark-bigdata/salidas_parquet/saber11_limpio.parquet/_temporary/0/task_202610291432171067797773598110307_0050_m_000007]: it still exists.
+26/10/29 14:32:18 WARN FileUtil: Failed to delete file or dir [/sessions/rcw-01fmygttej2tpqryxzkize6e/mnt/BIG DATA (23 oct)/Entregables_Tarea3/2_Repositorio_codigo/saber11-spark-bigdata/salidas_parquet/saber11_limpio.parquet/_temporary/0/task_202610291432171067797773598110307_0050_m_000000]: it still exists.
+26/10/29 14:32:18 WARN FileUtil: Failed to delete file or dir [/sessions/rcw-01fmygttej2tpqryxzkize6e/mnt/BIG DATA (23 oct)/Entregables_Tarea3/2_Repositorio_codigo/saber11-spark-bigdata/salidas_parquet/saber11_limpio.parquet/_temporary/0/task_202610291432171067797773598110307_0050_m_000001]: it still exists.
+26/10/29 14:32:18 WARN FileUtil: Failed to delete file or dir [/sessions/rcw-01fmygttej2tpqryxzkize6e/mnt/BIG DATA (23 oct)/Entregables_Tarea3/2_Repositorio_codigo/saber11-spark-bigdata/salidas_parquet/saber11_limpio.parquet/_temporary/0/task_202610291432171067797773598110307_0050_m_000006]: it still exists.
+DataFrame limpio guardado en Parquet: salidas_parquet/saber11_limpio.parquet
+
+==============================================================================
+  4. ANÁLISIS EXPLORATORIO (DataFrames)   [t = 9.4 s]
+==============================================================================
+4.1 Estadística descriptiva de los puntajes
++-------+--------------------+-----------------+------------------------+------------------+------------------+------------------+
+|summary|punt_lectura_critica|punt_matematicas |punt_sociales_ciudadanas|punt_c_naturales  |punt_ingles       |punt_global       |
++-------+--------------------+-----------------+------------------------+------------------+------------------+------------------+
+|count  |200000              |200000           |200000                  |200000            |200000            |200000            |
+|mean   |49.484              |49.496625        |49.497885               |49.4899           |49.47897          |247.4564          |
+|stddev |12.777841381319153  |12.80256256135528|12.813680832565531      |12.763205024092214|12.793710803917712|53.246123284124806|
+|min    |0                   |0                |0                       |0                 |0                 |8                 |
+|max    |100                 |100              |100                     |100               |100               |479               |
++-------+--------------------+-----------------+------------------------+------------------+------------------+------------------+
+
+Cuartiles aproximados del puntaje global: Q1=212  mediana=247  Q3=283
+4.2 Distribución del puntaje global (intervalos de 10 puntos)
+4.3 Puntaje global por año y calendario
++----+-----------+---------------+-------------+
+|anio|estudiantes|promedio_global|desv_estandar|
++----+-----------+---------------+-------------+
+|2019|80434      |247.62         |53.26        |
+|2020|19857      |246.78         |53.44        |
+|2021|19941      |247.37         |52.95        |
+|2022|79768      |247.48         |53.26        |
++----+-----------+---------------+-------------+
+
++----------+-----------+---------------+-------------+
+|calendario|estudiantes|promedio_global|desv_estandar|
++----------+-----------+---------------+-------------+
+|A         |166745     |247.55         |53.28        |
+|B         |16706      |247.16         |52.93        |
+|OTRO      |16549      |246.78         |53.21        |
++----------+-----------+---------------+-------------+
+
+4.4 Puntaje global por estrato (0 = sin estrato)
++-------+-----------+---------------+-------------+
+|estrato|estudiantes|promedio_global|desv_estandar|
++-------+-----------+---------------+-------------+
+|0      |24821      |247.45         |53.29        |
+|1      |25016      |246.68         |53.51        |
+|2      |25044      |247.13         |52.84        |
+|3      |25110      |247.52         |53.07        |
+|4      |25213      |247.88         |53.09        |
+|5      |25010      |248.12         |53.32        |
+|6      |24818      |247.05         |53.4         |
++-------+-----------+---------------+-------------+
+
+4.5 Puntaje global por naturaleza y zona del colegio
++----------+------+-----------+---------------+
+|naturaleza|zona  |estudiantes|promedio_global|
++----------+------+-----------+---------------+
+|NO OFICIAL|RURAL |16701      |246.77         |
+|NO OFICIAL|URBANO|33219      |247.46         |
+|OFICIAL   |RURAL |50021      |247.33         |
+|OFICIAL   |URBANO|100059     |247.63         |
++----------+------+-----------+---------------+
+
+4.6 Ranking de departamentos (mínimo 1000 estudiantes)
++---------------+-----------+---------------+
+|departamento   |estudiantes|promedio_global|
++---------------+-----------+---------------+
+|ATLANTICO      |8748       |248.52         |
+|AMAZONAS       |8723       |248.28         |
+|META           |8664       |248.02         |
+|ANTIOQUIA      |8647       |247.98         |
+|CESAR          |8571       |247.79         |
+|MAGDALENA      |8701       |247.77         |
+|SANTANDER      |8603       |247.64         |
+|LA GUAJIRA     |8650       |247.64         |
+|BOGOTA         |17533      |247.58         |
+|NORTE SANTANDER|8695       |247.57         |
+|CORDOBA        |8680       |247.56         |
+|SUCRE          |8565       |247.47         |
+|NARIÑO         |8606       |247.39         |
+|CHOCO          |8778       |247.36         |
+|VALLE          |8688       |247.32         |
+|BOYACA         |8908       |247.26         |
+|BOLIVAR        |8696       |247.21         |
+|CUNDINAMARCA   |8728       |247.19         |
+|TOLIMA         |8598       |247.16         |
+|CALDAS         |8638       |247.15         |
+|CAUCA          |8760       |246.95         |
+|HUILA          |8820       |245.15         |
++---------------+-----------+---------------+
+
+4.7 Acceso a internet y computador
++------------+--------------+-----------+---------------+
+|internet    |computador    |estudiantes|promedio_global|
++------------+--------------+-----------+---------------+
+|Con internet|Con computador|22344      |247.39         |
+|Con internet|Sin computador|22164      |247.43         |
+|Sin internet|Con computador|21676      |247.56         |
+|Sin internet|Sin computador|21987      |248.06         |
++------------+--------------+-----------+---------------+
+
+4.8 Educación de la madre
++------------------------------------+-----------+---------------+-------------+
+|educacion_madre                     |estudiantes|promedio_global|desv_estandar|
++------------------------------------+-----------+---------------+-------------+
+|Educación profesional completa      |15555      |248.39         |52.95        |
+|Educación profesional incompleta    |15581      |247.23         |52.75        |
+|Ninguno                             |15495      |247.76         |53.22        |
+|Postgrado                           |15301      |247.07         |53.45        |
+|Primaria completa                   |15312      |246.99         |53.45        |
+|Primaria incompleta                 |15493      |247.05         |53.37        |
+|Secundaria (Bachillerato) completa  |15438      |247.35         |53.39        |
+|Secundaria (Bachillerato) incompleta|15413      |247.26         |53.18        |
+|Técnica o tecnológica completa      |15496      |247.37         |53.09        |
+|Técnica o tecnológica incompleta    |15190      |247.9          |53.67        |
++------------------------------------+-----------+---------------+-------------+
+
+4.9 Género del estudiante
++-----------+-----------+---------------+-------------+
+|estu_genero|estudiantes|promedio_global|desv_estandar|
++-----------+-----------+---------------+-------------+
+|F          |80002      |247.27         |53.33        |
+|M          |80248      |247.45         |53.26        |
++-----------+-----------+---------------+-------------+
+
+4.10 Correlación de Pearson entre áreas
+  punt_lectura_critica       1.000  0.606  0.608  0.608  0.607
+  punt_matematicas           0.606  1.000  0.608  0.607  0.607
+  punt_sociales_ciudadanas   0.608  0.608  1.000  0.607  0.609
+  punt_c_naturales           0.608  0.607  0.607  1.000  0.607
+  punt_ingles                0.607  0.607  0.609  0.607  1.000
+4.11 Niveles de desempeño por naturaleza del colegio (%)
++----------+-----------+---------------+--------------+----------------+
+|naturaleza|Bajo (<200)|Medio (200-299)|Alto (300-399)|Superior (>=400)|
++----------+-----------+---------------+--------------+----------------+
+|OFICIAL   |18.39      |65.03          |16.37         |0.21            |
+|NO OFICIAL|18.33      |65.42          |16.07         |0.19            |
++----------+-----------+---------------+--------------+----------------+
+
+
+==============================================================================
+  5. OPERACIONES CON RDD (transformaciones y acciones)   [t = 15.4 s]
+==============================================================================
+count() -> registros en el RDD: 200,000
+filter(punt_global >= 400).count() -> 402 estudiantes
+map + reduceByKey + take(5) -> 5 departamentos con mayor promedio:
+   ATLANTICO             248.52
+   AMAZONAS              248.28
+   META                  248.02
+   ANTIOQUIA             247.98
+   CESAR                 247.79
+flatMap + reduceByKey + collect() -> promedio por área:
+   Matemáticas                 49.5
+   Sociales y ciudadanas       49.5
+   Ciencias naturales         49.49
+   Inglés                     49.48
+   Lectura crítica            49.48
+groupByKey().mapValues(max) (muestra 1 %) -> [('NO OFICIAL', 435), ('OFICIAL', 423)]
+reduceByKey(max)           (muestra 1 %) -> [('NO OFICIAL', 435), ('OFICIAL', 423)]   (mismo resultado, menos datos en el shuffle)
+reduce(+) -> suma = 49,491,280; promedio nacional = 247.46
+
+==============================================================================
+  6. VISUALIZACIÓN DE RESULTADOS   [t = 19.3 s]
+==============================================================================
+  -> salidas/graficos/g1_distribucion_puntaje_global.png
+  -> salidas/graficos/g2_puntaje_por_estrato.png
+  -> salidas/graficos/g3_naturaleza_zona.png
+  -> salidas/graficos/g4_ranking_departamentos.png
+  -> salidas/graficos/g5_internet_computador.png
+  -> salidas/graficos/g6_educacion_madre.png
+  -> salidas/graficos/g7_correlacion_areas.png
+  -> salidas/graficos/g8_promedio_por_area_rdd.png
+  -> reporte HTML: salidas/reporte.html
+
+==============================================================================
+  FIN · tiempo total 21.3 s · Spark UI: http://<IP-de-la-VM>:4040   [t = 21.3 s]
+==============================================================================
+
+EXIT_CODE=0
+Terminado: 2026-10-29 14:32:31 UTC

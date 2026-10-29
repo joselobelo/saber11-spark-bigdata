@@ -1,0 +1,6 @@
+,punt_lectura_critica,punt_matematicas,punt_sociales_ciudadanas,punt_c_naturales,punt_ingles
+punt_lectura_critica,1.0,0.61,0.61,0.61,0.61
+punt_matematicas,0.61,1.0,0.61,0.61,0.61
+punt_sociales_ciudadanas,0.61,0.61,1.0,0.61,0.61
+punt_c_naturales,0.61,0.61,0.61,1.0,0.61
+punt_ingles,0.61,0.61,0.61,0.61,1.0
